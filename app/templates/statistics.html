@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<head>
+    <style>
+       
+        /* td {
+    border: .5px solid rgba(255, 255, 255, .3); ;
+    
+    
+ } */
+ /* th {
+    border: .5px solid rgba(255, 255, 255, .3); ;
+    
+    
+ } */
+ .table-row{
+cursor:pointer;
+}
+.table-row:hover{
+    background-color: rgb(216, 155, 51);
+}
+   
+        
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex " style="background-color: rgb(103, 175, 220);color:#fff;width:100%;margin: auto;">
+                    <div class="col "> Statistics</div>
+                </div>
+                
+                <div class="table-responsive ">
+                    
+                    <table  class="table " style="background-color: rgba(33,57,77,255);color:#fff; " border="1">
+                        <tr >
+                            
+                            
+                            <th>     <table  class="table " style="width: 100%;" >
+                                <thead>
+                                <tr>
+                                  <th rowspan="3" colspan="2"   class="align-middle text-white "> 
+                                    <h6 class="d-flex align-items-sm-start par p-1 py-1" style="margin-left: 20px;">Type of Vouchers</h6>
+                                    <th rowspan="3"  class="text-white " style="width: 30px;">
+                                    <h6 style="text-align: end; font-size: 15px;">ABC Pvt LTD<br>
+                                        For 1-Apr-22</h6>
+                                    </th>
+                                </th>
+                                </tr>
+                            
+                                  
+                            </thead>
+                            <tbody>
+                            
+                                
+                             
+                                {% for i in voucher %}
+                                <tr class="table-row" data-href="{% url 'voucher_monthly_register' %}" >
+                                    <td colspan="2" >{{i.Vouchers_name}}</td>
+                                    <td style="text-align: center;" >0</td>
+                                    
+                                </tr>
+                                {% endfor %}
+                               
+                            
+                            </tbody>
+                            </table>
+                        </th>
+                            <th>     <table  class="table " style="margin-top: -618px;">
+                                <thead>
+                                <tr>
+                                  <th rowspan="3" colspan="2"   > 
+                                    <h6 class="d-flex align-items-sm-start par p-1 py-1" style="margin-left: 20px;">Type of Accounts</h6>
+                                    <th rowspan="3"  class="text-white " style="width: 30px;">
+                                    <h6 style="text-align: end; font-size: 15px;">ABC Pvt LTD<br>
+                                        For 1-Apr-22</h6>
+                                    </th>
+                                </th>
+                                </tr>
+                                
+                                
+                                  
+                                  
+                            </thead>
+                            <tbody>
+                                <!-- <tr class="table-row" data-href="" > 
+                                    <td colspan="2" >Ads</td>
+                                    <td style="text-align: center;" >0</td>
+                                    
+                                </tr> -->
+                             
+                            </tbody>
+        
+                            </table>
+                        </th>
+                    
+
+                        </tr>
+               
+
+                    
+                   </table>
+                   
+                                     
+                    
+                        
+                        </div>
+                      
+
+              
+                       
+
+               
+
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function($) {
+            $(".table-row").click(function() {
+                window.document.location = $(this).data("href");
+            });
+        });
+    </script>
+{% endblock %}

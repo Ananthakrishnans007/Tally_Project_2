@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<head>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            // $(document).ready(function()
+
+            // {
+            //     var amount;
+            //     var total=0;
+            //     $('td:nth-child(2)').each(function()
+
+            //     {
+
+            //         amount=$(this).html()
+            //         total+=parseInt(amount);
+            //         $('#totalamount').text(total);
+
+            //     });
+            // });
+
+            
+
+        </script>
+    
+    <style>
+
+    thead th {
+    border: .5px solid rgba(255, 255, 255, .3); ;
+    
+    
+ }
+ .table-row{
+cursor:pointer;
+}
+.table-row:hover{
+    background-color: rgb(216, 155, 51);
+}
+.table-row1{
+cursor:pointer;
+}
+.table-row1:hover{
+    background-color: rgb(216, 155, 51);
+}
+        
+    </style>
+</head>
+<body>
+    
+ 
+
+    <div class="container-fluid">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex " style="background-color: rgb(103, 175, 220);color:#fff;width:100%;margin: auto;">
+                    <div class="col "> Cash/Bank Summary</div>
+                </div>
+                
+                <div class="table-responsive ">
+                    <table  class="table  " style="background-color: rgba(33,57,77,255);color:#fff;">
+                    <thead>
+                        <tr>
+                            <th rowspan="3" colspan="2"   class="align-middle text-white "> 
+                              <h6 class="d-flex align-items-sm-start par p-1 py-1" style="margin-left: 20px;">Type of Vouchers</h6>
+                            </th>
+                              <th  colspan="2"  class="text-white " style=" width: 25%">
+                              <h6 style="text-align: center; font-size: 15px;">
+                                <i>Payment</i><br>
+                                <b>ABC Pvt LTD</b><br>
+                                  For 1-Apr-22</h6>
+                              </th>
+                              <tr>
+                              <th colspan="2" style="text-align: center; font-size: 15px;" ><b>Transations</b></th>
+                            </tr>
+                            <tr>
+                                <th  style="text-align: center; font-size: 15px;" >Total Voucher</th>
+                                <th  style="text-align: center; font-size: 15px;" >(Cancelled)</th>
+                              </tr>
+                          
+                          </tr>
+                       
+                    </thead>
+
+                    <tbody >
+                        {% for i in mo %}
+                        <tr class="table-row">
+                            <td colspan="2" >{{i.month_name}}</td>
+                            <td style="text-align: center;">5</td>
+                            <td style="text-align: center;">5</td>
+                            
+                            
+                            
+                        </tr>
+                        {% endfor %}
+
+                        
+                        
+                        
+                           
+                          
+                    
+                        <tr class="table-row1">
+                            <th colspan="2" ><h6 class="d-flex align-items-sm-start par p-1 py-1 foot" style="margin-left: 20px;">Grand Total</h6></th>
+                            <th style="text-align: center;">5</th>
+                            <th style="text-align: center;">5</th>
+                            
+                            
+                            
+                        </tr>
+
+                    </tbody>
+
+
+
+
+                    </table>
+
+
+                  </div>
+
+              
+                  
+
+
+               
+
+
+
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function($) {
+        $(".table-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
+    });
+</script>
+{% endblock %}
