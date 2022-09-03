@@ -22,6 +22,13 @@ cursor:pointer;
 .table-row:hover{
     background-color: rgb(216, 155, 51);
 }
+.table-row1{
+cursor:pointer;
+}
+.table-row1:hover{
+    background-color: rgb(216, 155, 51);
+}
+  
    
         
     </style>
@@ -59,18 +66,31 @@ cursor:pointer;
                                 
                              
                                 {% for i in voucher %}
-                                <tr class="table-row" data-href="{% url 'voucher_monthly_register' %}" >
+                                <tr class="table-row" data-href="{% url 'voucher_monthly_register' i.id %}" >
                                     <td colspan="2" >{{i.Vouchers_name}}</td>
-                                    <td style="text-align: center;" >0</td>
-                                    
+                                    {% if i.total_set.all  %}
+                                    {% for j in i.total_set.all %}
+                                    <td style="text-align: center;" >{{j.Total}}</td>
+                                    {% endfor %}
+
+                                    {% else %}
+                                    <td style="text-align: center;" ></td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
+
+                                <tr class="table-row1">
+                            <th colspan="2" ><h6 class="d-flex align-items-sm-start par p-1 py-1 foot" style="margin-left: 20px;">Total</h6></th>
+                            
+                            <th style="text-align: center;"><hr>{{sum}}<hr><hr style="margin-top: -20px;"></th>
+                            
+                                </tr>
                                
                             
                             </tbody>
                             </table>
                         </th>
-                            <th>     <table  class="table " style="margin-top: -618px;">
+                            <th>     <table  class="table " style="margin-top: -672px;">
                                 <thead>
                                 <tr>
                                   <th rowspan="3" colspan="2"   > 

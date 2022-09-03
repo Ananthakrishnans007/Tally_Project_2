@@ -8,3 +8,8 @@ admin.site.register(Vouchers)
 
 admin.site.register(Months)
 
+admin.site.register(Voucher_Register)
+
+admin.site.register(Voucher_count)
+
+

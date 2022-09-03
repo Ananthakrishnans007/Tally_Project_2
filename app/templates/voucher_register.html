@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+        
+
+    </script>
+    <style>
+        
+        /* thead th {
+    border: .5px solid rgba(255, 255, 255, .3); ;
+    
+    
+ } */
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex " style="background-color: rgb(103, 175, 220);color:#fff;width:100%;margin: auto;">
+                    <div class="col "> Voucher Register</div>
+                   
+                </div>
+                <div class="row  " style="height: 50px;">
+                <div class="col ">
+                    <h6>
+                    <span class=" d-flex justify-content-start" style="margin-top: 8px;"><strong> List of {{vch.Vouchers_name}}  Vouchers </strong> </span>
+                    <span class="d-flex  justify-content-end " style="margin-top: -15px;"> 1-Apr-22 to 30-Apr-22</span>
+                </h6>
+                </div>
+            </div>
+                <div class="table-responsive">
+                    <table  class="table  " style="background-color: rgba(33,57,77,255);color:#fff;">
+                        <thead >
+                        <tr>
+                          <th style="text-align: center;">Date</th>
+                          <th colspan="2"  style="width: 40%;">Particulars</th>
+                          <th style="text-align: center;">Vch Type</th>
+                          <th style="text-align: right;">Vch No.</th>
+                          <th style="text-align: right;">Debit <br>Amount</th>
+                          <th style="text-align: right;">Credit<br> Amount</th>
+                          
+                        </tr>
+                    </thead>
+
+                    <tbody >
+                        {% for i in voucher %}
+                        <tr>
+                            <td style="text-align: center;">{{i.Date}}</td>
+                            <td colspan="2"><strong>{{i.Particulars}}</strong></td>
+                            <td style="text-align: center;"><strong>{{vch.Vouchers_name}}</strong></td>
+                            <td style="text-align: right;"><strong>{{forloop.counter}}</strong></td>
+                            <td  style="text-align: right;"><strong>
+                                {% if i.Debit_Amount %}
+                                {{i.Debit_Amount}}
+                                {% endif %}
+                            </strong></td>
+                            <td  style="text-align: right;"><strong>
+                                {% if i.Credit_Amount %}
+                                {{i.Credit_Amount}}
+                                {% endif %}
+                            </strong></td>
+
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="5" style="text-align: right;"><strong>Total:</strong></td>
+                            
+                            <td  style="text-align: right;"><strong>
+                                {% if total_debit is not 0 %}
+                                {{total_debit}}
+                                {% endif %}
+                            </strong></td>
+                            <td  style="text-align: right;"><strong>
+                                {% if total_credit is not 0 %}
+                                {{total_credit}}
+                                {% endif %}
+                            </strong></td>
+
+                        </tr>
+                        
+
+
+                    
+                    </tbody>
+
+
+
+
+                    
+
+                    </table>
+
+
+                  </div>
+
+              
+                  
+
+
+               
+
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

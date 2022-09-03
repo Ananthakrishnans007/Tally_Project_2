@@ -9,7 +9,11 @@ urlpatterns = [
 
     path('Statistics',views.Statistics,name='Statistics'),
 
-    path('voucher_monthly_register',views.voucher_monthly_register,name='voucher_monthly_register'),
+    path('voucher_monthly_register/<int:id>',views.voucher_monthly_register,name='voucher_monthly_register'),
+
+    path('voucher_register/<int:id>/<int:pk>',views.voucher_register,name='voucher_register'),
+
+    
 
 
 
