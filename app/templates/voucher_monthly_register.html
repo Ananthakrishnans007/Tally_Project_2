@@ -46,6 +46,24 @@ cursor:pointer;
 .table-row1:hover{
     background-color: rgb(216, 155, 51);
 }
+.btn{
+    border: 1px solid rgb(103, 175, 220);
+    /* height: 30px;
+    text-align: center; */
+    
+    width: 95%;
+    
+
+    
+  }
+  .table1{
+    border: 1px solid rgb(103, 175, 220);
+  }
+  .selected{background-color:  rgb(216, 155, 51);color: #fff;font-weight: bold
+}
+  .selected1 {
+    background-color:  rgb(77, 154, 242);
+  }
         
     </style>
 </head>
@@ -95,6 +113,7 @@ cursor:pointer;
                             {% if j.Voucher == vch %}
                             <td style="text-align: center;">{{j.Total_Voucher}}</td>
                             <td style="text-align: center;">{{j.Cancelled}}</td>
+                            
                             {% endif %}
                             
                             {% endfor %}
@@ -120,7 +139,7 @@ cursor:pointer;
                         <tr class="table-row1">
                             <th colspan="2" ><h6 class="d-flex align-items-sm-start par p-1 py-1 foot" style="margin-left: 20px;">Grand Total</h6></th>
                             <th style="text-align: center;">{{total}}</th>
-                            <th style="text-align: center;">5</th>
+                            <th style="text-align: center;"></th>
                             
                             
                             
@@ -136,6 +155,18 @@ cursor:pointer;
 
                   </div>
 
+                  <table class="table1 col" style="text-align: center; margin-top: 10px;" >
+                    <thead>
+                        <th ><a href="{% url 'Index' %}" type="button"  class="btn p-1 px-4" >Quit</a></th>
+                        <th><button type="button"  class="btn p-1 px-4" onclick="myFunction()">Select</button></th>
+                        <th><button type="button"  class="btn p-1 px-1" onclick="removeSelectedRow()">Remove Line</button></th>
+                        <th><a href="{% url 'Statistics' %}" type="button"  class="btn p-1 px-1" >Restore Line</a></th>
+                    </thead>
+                </table>
+                <div style="margin-top: 1px; height: 10px ; width: 100%;"></div>
+
+       
+
               
                   
 
@@ -146,13 +177,98 @@ cursor:pointer;
 
             </div>
         </div>
+        
     </div>
 
 <script>
     $(document).ready(function($) {
-        $(".table-row").click(function() {
+        $(".table-row").dblclick(function() {
             window.document.location = $(this).data("href");
         });
     });
+</script>
+<script>
+            
+    var index;  // variable to set the selected row index
+    function getSelectedRow()
+    {
+        var table = document.getElementById("table");
+        for(var i = 1; i < table.rows.length; i++)
+        {
+            table.rows[i].onclick = function()
+            {
+                // clear the selected from the previous selected row
+                // the first time index is undefined
+                if(typeof index !== "undefined"){
+                    table.rows[index].classList.toggle("selected");
+                }
+               
+                index = this.rowIndex;
+                this.classList.toggle("selected");
+
+            };
+        }
+            
+    }
+
+
+    getSelectedRow();
+
+    
+
+    
+    
+    
+    
+</script>
+
+<script>
+
+   
+function myFunction() {
+ var se = document.getElementsByClassName('selected');
+ se[0].style.backgroundColor = "lightblue";
+    
+}
+    </script>
+
+
+<!-- <script>
+        
+        var rIndex,
+            table = document.getElementById("table");
+        
+        
+        function selectedRowToInput()
+        {
+            
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                table.rows[i].onclick = function()
+                {
+                  // get the seected row index
+                  rIndex = this.rowIndex;
+                  this.classList.toggle("selected");
+                
+                };
+            }
+        }
+        selectedRowToInput();
+        
+        
+        
+        function removeSelectedRow()
+        {
+            table.deleteRow(rIndex);
+            
+        }
+    </script> -->
+
+<script>
+function removeSelectedRow()
+        {
+            table.deleteRow(index);
+            
+        }
 </script>
 {% endblock %}

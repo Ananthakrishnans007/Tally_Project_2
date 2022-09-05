@@ -1,5 +1,6 @@
+from contextlib import redirect_stderr
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from . models import*
 
@@ -121,6 +122,7 @@ def voucher_register(request,id,pk):
         'total_debit':total_debit,
         'total_credit':total_credit,
         'vch':vch,
+        'm':m,
 
         
         
@@ -134,7 +136,12 @@ def voucher_register(request,id,pk):
 
 
 
+def Delete(request,id,pk,de):
+    voucher = Voucher_Register.objects.get(id=de)
+    voucher.delete()
+    
 
+    return redirect(voucher_register,id,pk)
 
 def test(request):
     return render(request,'test.html')

@@ -14,7 +14,7 @@ urlpatterns = [
     path('voucher_register/<int:id>/<int:pk>',views.voucher_register,name='voucher_register'),
 
     
-
+    path('Delete/<int:id>/<int:pk>/<int:de>',views.Delete,name='Delete'),
 
 
     path('test',views.test,name='test'),
