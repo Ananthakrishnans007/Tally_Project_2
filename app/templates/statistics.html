@@ -35,9 +35,7 @@ cursor:pointer;
     text-align: center; */
     
     width: 95%;
-    
-
-    
+ 
   }
   .table1{
     border: 1px solid rgb(103, 175, 220);
@@ -106,7 +104,7 @@ cursor:pointer;
                             </tbody>
                             </table>
                         </th>
-                            <th>     <table  class="table " style="margin-top: -672px;">
+                            <th>     <table  class="table " style="margin-top: -658px;">
                                 <thead>
                                 <tr>
                                   <th rowspan="3" colspan="2"   > 
@@ -123,7 +121,19 @@ cursor:pointer;
                                   
                             </thead>
                             <tbody>
-                               
+                                {% for i in accounts %}
+                                <tr class="table-row " data-href="" >
+                                    <td colspan="2" >{{i.Accounts_name}}</td>
+                                    {% if i.accounts_total_set.all  %}
+                                    {% for j in i.accounts_total_set.all %}
+                                    <td style="text-align: center;" >{{j.Total}}</td>
+                                    {% endfor %}
+
+                                    {% else %}
+                                    <td style="text-align: center;" ></td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
                              
                             </tbody>
         

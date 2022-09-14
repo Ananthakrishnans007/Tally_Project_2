@@ -9,6 +9,14 @@ class Vouchers(models.Model):
     def __str__(self):
         return self.Vouchers_name
 
+class Accounts(models.Model):
+    Accounts_name =models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.Accounts_name 
+
+
+
 class Months(models.Model):
     month_name = models.CharField(max_length=255)
 
@@ -45,6 +53,16 @@ class Total(models.Model):
 
     def __str__(self):
         return self.Voucher.Vouchers_name
+
+
+class Accounts_Total(models.Model):
+    Accounts = models.ForeignKey(Accounts,on_delete=models.CASCADE)
+    Total = models.IntegerField(default="",null=True,blank=True)
+
+    def __str__(self):
+        return self.Accounts.Accounts_name
+
+
 
 
 

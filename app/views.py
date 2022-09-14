@@ -15,6 +15,7 @@ def Index(request):
 
 def Statistics(request):
     voucher =Vouchers.objects.all().order_by('Vouchers_name')
+    accounts = Accounts.objects.all()
     sum=0
     total1= Total.objects.all()
     for i in total1:
@@ -26,6 +27,7 @@ def Statistics(request):
         
         'voucher':voucher,
         'sum':sum,
+        'accounts':accounts,
         
         
 

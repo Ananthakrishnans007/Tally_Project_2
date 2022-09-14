@@ -12,4 +12,7 @@ admin.site.register(Voucher_Register)
 
 admin.site.register(Voucher_count)
 
+admin.site.register(Accounts)
 
+
+admin.site.register(Accounts_Total)
