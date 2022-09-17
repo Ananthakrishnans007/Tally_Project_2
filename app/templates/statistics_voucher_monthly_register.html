@@ -6,26 +6,7 @@
 <head>
     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script>
-            // $(document).ready(function()
-
-            // {
-            //     var amount;
-            //     var total=0;
-            //     $('td:nth-child(2)').each(function()
-
-            //     {
-
-            //         amount=$(this).html()
-            //         total+=parseInt(amount);
-            //         $('#totalamount').text(total);
-
-            //     });
-            // });
-
-            
-
-        </script>
+        
     
     <style>
 
@@ -105,10 +86,10 @@ cursor:pointer;
 
                     <tbody >
                         {% for i in mo %}
-                        <tr class="table-row" data-href="{% url 'voucher_register' i.id vch.id %}" >
+                        <tr class="table-row" data-href="{% url 'Statistics_voucher_register' i.id vch.id %}" >
                             <td colspan="2" >{{i.month_name}}</td>
-                            {% if i.voucher_count_set.all %}
-                            {% for j in i.voucher_count_set.all %}
+                            {% if i.statistics_voucher_count_set.all %}
+                            {% for j in i.statistics_voucher_count_set.all %}
                             
                             {% if j.Voucher == vch %}
                             <td style="text-align: center;">{{j.Total_Voucher}}</td>

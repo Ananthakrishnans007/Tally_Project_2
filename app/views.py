@@ -14,10 +14,10 @@ def Index(request):
 # statistics    
 
 def Statistics(request):
-    voucher =Vouchers.objects.all().order_by('Vouchers_name')
-    accounts = Accounts.objects.all()
+    voucher =statistics_Vouchers.objects.all().order_by('Vouchers_name')
+    accounts = statistics_Accounts.objects.all()
     sum=0
-    total1= Total.objects.all()
+    total1= statistics_Total_Voucher.objects.all()
     for i in total1:
         if i.Total:
             sum+=i.Total
@@ -36,23 +36,23 @@ def Statistics(request):
     
     return render(request,'statistics.html',context)
 
-def voucher_monthly_register(request,id):
+def Statistics_voucher_monthly_register(request,id):
     mo = Months.objects.all()
 
-    vch = Vouchers.objects.get(id=id)
-    count = Voucher_count.objects.filter(Voucher=id)
+    vch = statistics_Vouchers.objects.get(id=id)
+    count = statistics_Voucher_count.objects.filter(Voucher=id)
     total=0
     for i in count:
         if i.Total_Voucher:
             total+=i.Total_Voucher
 
-    if Total.objects.filter(Voucher=id):
-        to=Total.objects.get(Voucher=id)
+    if statistics_Total_Voucher.objects.filter(Voucher=id):
+        to=statistics_Total_Voucher.objects.get(Voucher=id)
         to.Voucher=vch
         to.Total=total
         to.save()
     else:
-        to=Total()
+        to=statistics_Total_Voucher()
         to.Voucher=vch
         to.Total=total
         to.save()
@@ -72,11 +72,11 @@ def voucher_monthly_register(request,id):
     }
 
     
-    return render(request,'voucher_monthly_register.html',context)
+    return render(request,'statistics_voucher_monthly_register.html',context)
 
-def voucher_register(request,id,pk):
-    voucher = Voucher_Register.objects.filter(Month=id,Voucher=pk)
-    vch = Vouchers.objects.get(id=pk)
+def Statistics_voucher_register(request,id,pk):
+    voucher = statistics_Voucher_Register.objects.filter(Month=id,Voucher=pk)
+    vch = statistics_Vouchers.objects.get(id=pk)
     
 
     total_debit=0
@@ -87,11 +87,11 @@ def voucher_register(request,id,pk):
             total_debit +=i.Debit_Amount
         if i.Credit_Amount:
             total_credit +=i.Credit_Amount
-    v=Vouchers.objects.get(id=pk)
+    v=statistics_Vouchers.objects.get(id=pk)
     m=Months.objects.get(id=id)
     count = voucher.count()
-    if Voucher_count.objects.filter(Month=id,Voucher=pk):
-        total= Voucher_count.objects.get(Month=id,Voucher=pk)
+    if statistics_Voucher_count.objects.filter(Month=id,Voucher=pk):
+        total= statistics_Voucher_count.objects.get(Month=id,Voucher=pk)
         
         total.Voucher=v
         total.Month=m
@@ -101,22 +101,14 @@ def voucher_register(request,id,pk):
 
         total.save()
     else:
-        total= Voucher_count()
+        total= statistics_Voucher_count()
         total.Voucher=v
         total.Month=m
         total.Total_Voucher=count
         
 
 
-
         total.save()
-
-
-
-        
-
-
-
 
 
     context = {
@@ -133,20 +125,17 @@ def voucher_register(request,id,pk):
     }
 
     
-    return render(request,'voucher_register.html',context)
+    return render(request,'statistics_voucher_register.html',context)
 
 
 
 
-def Delete(request,id,pk,de):
-    voucher = Voucher_Register.objects.get(id=de)
+def Statistics_voucher_Delete(request,id,pk,de):
+    voucher = statistics_Voucher_Register.objects.get(id=de)
     voucher.delete()
     
 
-    return redirect(voucher_register,id,pk)
-
-def test(request):
-    return render(request,'test.html')
+    return redirect(Statistics_voucher_register,id,pk)
 
 
 

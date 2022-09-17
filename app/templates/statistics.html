@@ -80,10 +80,10 @@ cursor:pointer;
                                 
                              
                                 {% for i in voucher %}
-                                <tr class="table-row " data-href="{% url 'voucher_monthly_register' i.id %}" >
+                                <tr class="table-row " data-href="{% url 'Statistics_voucher_monthly_register' i.id %}" >
                                     <td colspan="2" >{{i.Vouchers_name}}</td>
-                                    {% if i.total_set.all  %}
-                                    {% for j in i.total_set.all %}
+                                    {% if i.statistics_total_voucher_set.all  %}
+                                    {% for j in i.statistics_total_voucher_set.all %}
                                     <td style="text-align: center;" >{{j.Total}}</td>
                                     {% endfor %}
 
@@ -124,8 +124,8 @@ cursor:pointer;
                                 {% for i in accounts %}
                                 <tr class="table-row " data-href="" >
                                     <td colspan="2" >{{i.Accounts_name}}</td>
-                                    {% if i.accounts_total_set.all  %}
-                                    {% for j in i.accounts_total_set.all %}
+                                    {% if i.statistics_accounts_total_set.all  %}
+                                    {% for j in i.statistics_accounts_total_set.all  %}
                                     <td style="text-align: center;" >{{j.Total}}</td>
                                     {% endfor %}
 
@@ -159,7 +159,7 @@ cursor:pointer;
                                 <th ><a href="{% url 'Index' %}" type="button"  class="btn p-1 px-4" >Quit</a></th>
                                 <th><button type="button"  class="btn p-1 px-4" onclick="myFunction()">Select</button></th>
                                 <th><button type="button"  class="btn p-1 px-1" onclick="removeSelectedRow()">Remove Line</button></th>
-                                <th><a href="{% url 'Statistics' %}" type="button"  class="btn p-1 px-1" >Restore Line</a></th>
+                                <th><a href="" type="button"  class="btn p-1 px-1" >Restore Line</a></th>
                             </thead>
                         </table>
                         <div style="margin-top: 1px; height: 10px ; width: 100%;"></div>

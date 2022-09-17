@@ -9,15 +9,13 @@ urlpatterns = [
 
     path('Statistics',views.Statistics,name='Statistics'),
 
-    path('voucher_monthly_register/<int:id>',views.voucher_monthly_register,name='voucher_monthly_register'),
+    path('Statistics_voucher_monthly_register/<int:id>',views.Statistics_voucher_monthly_register,name='Statistics_voucher_monthly_register'),
 
-    path('voucher_register/<int:id>/<int:pk>',views.voucher_register,name='voucher_register'),
+    path('Statistics_voucher_register/<int:id>/<int:pk>',views.Statistics_voucher_register,name='Statistics_voucher_register'),
 
     
-    path('Delete/<int:id>/<int:pk>/<int:de>',views.Delete,name='Delete'),
+    path('Statistics_voucher_Delete/<int:id>/<int:pk>/<int:de>',views.Statistics_voucher_Delete,name='Statistics_voucher_Delete'),
 
-
-    path('test',views.test,name='test'),
 
 
 
